@@ -6,6 +6,10 @@
   width: 100%;
   margin: auto;
 }
+a {
+  text-decoration: none;
+}
+
 .main {
   display: flex;
   min-height: calc(100vh - 70px);
