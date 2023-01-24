@@ -1,8 +1,5 @@
-import Product from "../pages/Products";
-export default function Home() {
-  return (
-    <div className="pages home">
-      <Product />
-    </div>
-  );
+import "../styles/home.css";
+
+export default function AdminHome() {
+  return <div className="pages home">home</div>;
 }

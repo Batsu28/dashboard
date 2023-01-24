@@ -16,9 +16,9 @@ a {
 }
 .side_menu {
   width: 20%;
-  background-color: aqua;
+  background-color: #fff;
 }
 .pages {
   width: 80%;
-  background-color: blue;
+  background-color: #efeff0;
 }

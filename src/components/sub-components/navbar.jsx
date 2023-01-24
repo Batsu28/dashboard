@@ -1,28 +1,23 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { data } from "../../util/data";
 
 export default function Navbar(prop) {
-  const { setShowProduct } = prop;
-  const { MENUS } = prop;
-  function filterName(e) {
-    if (e.target.innerText.toLowerCase() === "all") {
-      setShowProduct(data);
-    } else {
-      let filteredData = data.filter(
-        (product) => product.category === e.target.innerText.toLowerCase()
-      );
-      setShowProduct(filteredData);
-    }
-
-    console.log(e.target.innerText.toLowerCase());
-  }
+  const { SIDEMENUS } = prop;
+  const naviagte = useNavigate();
+  const [sideVal, setSideVal] = useState("board");
 
   return (
     <nav>
       <ul>
-        {MENUS.map((menu, index) => (
+        {SIDEMENUS.map((menu, index) => (
           <li key={index}>
-            <button onClick={filterName}>{menu.toUpperCase()}</button>
+            <button
+              onClick={() => (naviagte(menu.url), setSideVal(menu.val))}
+              className={sideVal === menu.val ? "active" : "inactive"}
+            >
+              <div>{menu.icon}</div>
+              {menu.name}
+            </button>
           </li>
         ))}
       </ul>

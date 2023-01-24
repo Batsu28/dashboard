@@ -1,18 +1,30 @@
 import Person from "../components/icons/Person";
+import BoardIcon from "../components/icons/BoardIcon";
+import DisplayIcon from "../components/icons/DisplayIcon";
+import PaperIcon from "../components/icons/PaperIcon";
+import UsersIcon from "../components/icons/UsersIcon";
+import CaseIcon from "../components/icons/CaseIcon";
+import SettingIcon from "../components/icons/SettingIcon";
 
 export const MENUS = [
   { name: "LOG IN", url: "/login", image: <Person /> },
   { name: "SIGN UP", url: "/signup", image: <Person /> },
 ];
 
-export const users = [{ username: "user", password: "pass" }];
+export const users = [{ username: "admin", password: "pass", role: "admin" }];
 
-export const category = [
-  "all",
-  "appliances",
-  "computers & tablets",
-  "gaming console",
-  "telescope",
+export const SIDEMENUS = [
+  { name: "Хянах самбар", icon: <BoardIcon />, url: "", val: "board" },
+  {
+    name: "Бүтээгдэхүүнүүд",
+    icon: <DisplayIcon />,
+    url: "products",
+    val: "prod",
+  },
+  { name: "Захиалгууд", icon: <PaperIcon />, url: "order", val: "order" },
+  { name: "Хэрэглэгчид", icon: <UsersIcon />, url: "users", val: "users" },
+  { name: "Модератор", icon: <CaseIcon />, url: "moderator", val: "mode" },
+  { name: "Тохиргоо", icon: <SettingIcon />, url: "settings", val: "sett" },
 ];
 
 export const data = [
@@ -128,7 +140,7 @@ export const data = [
     price: 439,
     stock: 247,
     sale: 20,
-    category: "pad",
+    category: "computers & tablets",
   },
   {
     description:
@@ -157,9 +169,9 @@ export const data = [
     image:
       "https://www.xiaomihome.global/wp-content/uploads/2022/11/xiaomi-book-air-13-2022-cover-1.webp",
     price: 1200,
-    stock: 10,
-    sale: 247,
-    category: "laptop",
+    stock: 247,
+    sale: 10,
+    category: "computers & tablets",
   },
 
   {
@@ -224,7 +236,7 @@ export const data = [
     price: 1342,
     stock: 122,
     sale: 23,
-    category: "Apple",
+    category: "computers & tablets",
   },
   {
     description:
@@ -241,7 +253,7 @@ export const data = [
     price: 200,
     stock: 60,
     sale: 10,
-    category: "headphones",
+    category: "computers & tablets",
   },
   {
     description:
@@ -271,7 +283,7 @@ export const data = [
     price: 24,
     stock: 17,
     sale: 15,
-    category: "appliance",
+    category: "appliances",
   },
   {
     description:
@@ -305,7 +317,7 @@ export const data = [
     price: 1094,
     stock: 3,
     sale: 1,
-    category: "tablets",
+    category: "computers & tablets",
   },
   {
     description:
@@ -326,8 +338,8 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/61b2BrYtVGL._AC_SX679_.jpg",
     price: 189,
     stock: 22,
-    sale: 0.4,
-    category: "tablets",
+    sale: 0,
+    category: "computers & tablets",
   },
   {
     description:
@@ -348,8 +360,8 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/81d74GHCPEL._AC_SX679_.jpg",
     price: 1099,
     stock: 3,
-    sale: 0.2,
-    category: "tablets",
+    sale: 0,
+    category: "computers & tablets",
   },
   {
     description:
@@ -372,8 +384,8 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/51qmNla8aTL._AC_SX679_.jpg",
     price: 1399.99,
     stock: 5,
-    sale: 0.1,
-    category: "tablets",
+    sale: 0,
+    category: "computers & tablets",
   },
   {
     description:
@@ -396,8 +408,8 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/51D3B+8L7DL._AC_SX679_.jpg",
     price: 1399.99,
     stock: 4,
-    sale: 0.1,
-    category: "tablets",
+    sale: 0,
+    category: "computers & tablets",
   },
 
   {
@@ -410,7 +422,7 @@ export const data = [
       "https://m.media-amazon.com/images/I/51vfoiVL2LL._AC_UY436_FMwebp_QL65_.jpg",
     price: 94.99,
     stock: 28,
-    sale: 10.0,
+    sale: 10,
     category: "telescope",
   },
 
@@ -427,7 +439,7 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/41jzRLfDnAL._AC._SR360,460.jpg",
     price: 949.99,
     stock: 10,
-    sale: 10.0,
+    sale: 10,
     category: "computers & tablets",
   },
 
@@ -443,7 +455,7 @@ export const data = [
     image: "https://m.media-amazon.com/images/I/61uA2UVnYWL._AC._SR360,460.jpg",
     price: 394.99,
     stock: 40,
-    sale: 50.0,
+    sale: 50,
     category: "computers & tablets",
   },
 
@@ -462,7 +474,7 @@ export const data = [
       "https://m.media-amazon.com/images/I/61EN9UQLg2L._AC_UY436_FMwebp_QL65_.jpg",
     price: 389.99,
     stock: 20,
-    sale: 9.0,
+    sale: 9,
     category: "gaming console",
   },
 
@@ -476,7 +488,7 @@ export const data = [
       "https://m.media-amazon.com/images/I/81s-z8ThKlL._AC_UL640_FMwebp_QL65_.jpg",
     price: 89.99,
     stock: 5,
-    sale: 5.0,
+    sale: 5,
     category: "appliances",
   },
   {

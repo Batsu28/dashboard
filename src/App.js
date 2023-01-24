@@ -2,9 +2,12 @@ import "./App.css";
 import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import SideMenu from "./components/SideMenu";
-import Home from "./pages/Home";
 import Users from "./pages/Users";
-import LogIn from "./pages/LogIn";
+import Home from "./pages/Home";
+import Order from "./pages/Order";
+import Moderater from "./pages/Moderator";
+import Settings from "./pages/Settings";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -15,8 +18,11 @@ function App() {
           <SideMenu />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/moderator" element={<Moderater />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/login" element={<LogIn />} />
           </Routes>
         </div>
       </div>
