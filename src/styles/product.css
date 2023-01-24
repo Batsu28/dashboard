@@ -1,7 +1,31 @@
 .product {
-  display: flex;
-  flex-wrap: wrap;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
 }
 .off_canvas {
-  width: 1000px !important;
+	width: 500px !important;
+}
+.addProduct {
+	display: flex;
+	flex-direction: column;
+}
+.product_img input {
+	width: 100%;
+	height: 100px;
+}
+.product_info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.product_info label {
+	display: flex;
+	flex-direction: column;
+}
+.products {
+	background: #fff;
+}
+.products img {
+	width: 50px;
 }
