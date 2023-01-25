@@ -27,6 +27,64 @@ export const SIDEMENUS = [
   { name: "Тохиргоо", icon: <SettingIcon />, url: "settings", val: "sett" },
 ];
 
+export const order = [
+  {
+    id: 15358,
+    date: "2022.12.02",
+    phone: 99999999,
+    email: "example@gmail.com",
+    address: "ХУД",
+    number: 2,
+    price: "1,477,000",
+    payment: "Картаар",
+    status: "Идэвхитэй",
+  },
+  {
+    id: 15358,
+    date: "2022.12.02",
+    phone: 99999999,
+    email: "example@gmail.com",
+    address: "ХУД",
+    number: 2,
+    price: "1,477,000",
+    payment: "Картаар",
+    status: "Цуцлагдсан",
+  },
+  {
+    id: 15358,
+    date: "2022.12.02",
+    phone: 99999999,
+    email: "example@gmail.com",
+    address: "ХУД",
+    number: 2,
+    price: "1,477,000",
+    payment: "Картаар",
+    status: "Хүргэгдсэн",
+  },
+  {
+    id: 15358,
+    date: "2022.12.02",
+    phone: 99999999,
+    email: "example@gmail.com",
+    address: "ХУД",
+    number: 2,
+    price: "1,477,000",
+    payment: "Картаар",
+    status: "Идэвхитэй",
+  },
+  {
+    id: 15358,
+    date: "2022.12.02",
+    phone: 99999999,
+    email: "example@gmail.com",
+    address: "ХУД",
+    number: 2,
+    price: "1,477,000",
+    payment: "Картаар",
+    status: "Хүргэгдсэн",
+  },
+];
+
 export const data = [
   {
     description:
@@ -179,8 +237,7 @@ export const data = [
     spec: [{ type: "A19" }, { wattage: "9.5W" }, { output: "800 Lumens" }],
     name: "LED bulbs",
     id: "8bf7f5fc",
-    image:
-      "​​https://cdn.vox-cdn.com/thumbor/twhweqrG_obtz7SoYGWKld_qgMM=/0x0:5250x3600/1400x1400/filters:focal(2625x1800:2626x1801)/cdn.vox-cdn.com/uploads/chorus_asset/file/22823524/philips_smart_led_bulb_package.jpg",
+    image: "https://m.media-amazon.com/images/I/71BLIm-M1sL._AC_SX679_.jpg",
     price: 80,
     stock: 4,
     sale: 2,
@@ -197,7 +254,7 @@ export const data = [
     ],
     name: "Philips Oven",
     id: "8bf7f8d6",
-    image: "​​https://m.media-amazon.com/images/I/618O0ywM1SL._SX522_.jpg",
+    image: "https://m.media-amazon.com/images/I/618O0ywM1SL._SX522_.jpg",
     price: 7920,
     stock: 164,
     sale: 27,
@@ -214,7 +271,7 @@ export const data = [
     ],
     name: "Sketch Pad",
     id: "9afc4a40",
-    image: "​​https://m.media-amazon.com/images/I/61sC5JwNrpL._AC_SX679_.jpg",
+    image: "https://m.media-amazon.com/images/I/61sC5JwNrpL._AC_SX679_.jpg",
     price: 215.99,
     stock: 15,
     sale: 12,
@@ -248,8 +305,7 @@ export const data = [
     ],
     name: "Beats Solo3 Headphones",
     id: "4ab6599a",
-    image:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.apple.com%2Fshop%2Fproduct%2FMX432LL%2FA%2Fbeats-solo3-wireless-headphones-the-beats-icon-collection-matte-black&psig=AOvVaw2tl_AIH02av1Ou9DkxSqTX&ust=1673669056089000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJCPzZ7Vw_wCFQAAAAAdAAAAABAE",
+    image: "https://m.media-amazon.com/images/I/51QxA-98Q+L._AC_SX679_.jpg",
     price: 200,
     stock: 60,
     sale: 10,
