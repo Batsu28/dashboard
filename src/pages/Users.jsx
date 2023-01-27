@@ -30,6 +30,15 @@ export default function Users() {
       .delete(`http://localhost:2000/test/${id}`)
       .then((res) => console.log(res))
       .catch((res) => console.error(res));
+    location.reload();
+  }
+  function patch(e) {
+    e.preventDefault();
+    axios.patch(`http://localhost:2000/test/${getID}`, {
+      name: `${e.target.patch.value}`,
+      id: getID,
+    });
+    location.reload();
   }
   return (
     <div className="pages users">
@@ -49,6 +58,10 @@ export default function Users() {
             </div>
           ))}
       </div>
+      <form onSubmit={patch}>
+        <input type="text" name="patch" />
+        <button type="submit">hhh</button>
+      </form>
       <input type="button" value="del" onClick={() => dlt(getID)} />
     </div>
   );

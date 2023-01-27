@@ -11,6 +11,7 @@ export default function AddInput(prop) {
     if (e.target.label.value !== "" || e.target.spec.value !== "") {
       setSpecVal([...specVal, [e.target.label.value, e.target.spec.value]]);
     }
+
     console.log(e.target.label.value);
     console.log(e.target.spec.value);
   }

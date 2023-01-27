@@ -6,7 +6,7 @@ import AddIcon from "../icons/AddIcon";
 import axios from "axios";
 
 export default function ProductCanvas(prop) {
-  const { specVal, setSpecVal } = prop;
+  const { specVal, setSpecVal, product } = prop;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -14,8 +14,10 @@ export default function ProductCanvas(prop) {
 
   function postProduct(e) {
     e.preventDefault();
+
     let arr = specVal.map((spec) => ({ [spec[0]]: spec[1] }));
     console.log(arr);
+
     axios
       .post("http://localhost:2000/products", {
         description: "none",
@@ -28,12 +30,16 @@ export default function ProductCanvas(prop) {
       })
       .then((res) => console.log(res))
       .catch((res) => console.log(res));
-    setTest("no");
   }
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        Бараа нэмэх
+      <Button
+        variant="primary"
+        onClick={handleShow}
+        className="me-2 canvas_btn"
+      >
+        {!product && <AddIcon />}
+        {product ? "Засах" : "Бараа нэмэх"}
       </Button>
       <Offcanvas
         show={show}
@@ -48,37 +54,66 @@ export default function ProductCanvas(prop) {
           <form className="addProduct" onSubmit={postProduct}>
             <div className="product_img">
               <p>Барааны зураг</p>
-              <input type="url" name="addImg" />
+              <input
+                type="url"
+                name="addImg"
+                placeholder="Барааны зураг"
+                defaultValue={product && product.image}
+              />
             </div>
             <div className="product_info">
               <label>
                 Барааны нэр:
-                <input type="text" name="addName" />
+                <input
+                  type="text"
+                  name="addName"
+                  placeholder="Барааны нэр"
+                  defaultValue={product && product.name}
+                />
               </label>
               <label>
                 Барааны үнэ (₮):
-                <input type="text" name="addPrice" />
+                <input
+                  type="text"
+                  name="addPrice"
+                  placeholder="Барааны үнэ"
+                  defaultValue={product && product.price}
+                />
               </label>
               <label>
                 Үлдэгдэл:
-                <input type="text" name="addStock" />
+                <input
+                  type="text"
+                  name="addStock"
+                  placeholder="Үлдэгдэл"
+                  defaultValue={product && product.stock}
+                />
               </label>
               <label>
                 Хямдрал (%-иар):
-                <input type="text" name="addSale" />
+                <input
+                  type="text"
+                  name="addSale"
+                  placeholder="Хямдрал"
+                  defaultValue={product && product.sale}
+                />
               </label>
             </div>
             <div className="product_spec">
               <p>Үзүүлэлтүүд</p>
-              <AddInput
-                setSpecVal={setSpecVal}
-                specVal={specVal}
-                btnName={
-                  <div>
-                    <AddIcon /> Үзүүлэлт нэмэх
-                  </div>
-                }
-              />
+              {product ? (
+                ""
+              ) : (
+                <AddInput
+                  setSpecVal={setSpecVal}
+                  specVal={specVal}
+                  btnName={
+                    <div>
+                      <AddIcon /> Үзүүлэлт нэмэх
+                    </div>
+                  }
+                />
+              )}
               <div className="product_info">
                 {specVal &&
                   specVal.map((spec, index) => (
@@ -95,11 +130,14 @@ export default function ProductCanvas(prop) {
                 <select
                   name="addCategoty"
                   onChange={(e) => setCateVal(e.target.value)}
+                  defaultValue={product && product.category}
                 >
-                  <option value="tv">ЗУРАГТ, ТВ, ДЭЛГЭЦ</option>
-                  <option value="phone">ГАР УТАС, ЦАГ</option>
-                  <option value="kitchen">ГАЛ ТОГОО</option>
-                  <option value="com">КОМПЬЮТЕР, ПРИНТЕР</option>
+                  <option value="appliances">Appliances</option>
+                  <option value="computers & tablets">
+                    Computers & tablets
+                  </option>
+                  <option value="gaming console">Gaming console</option>
+                  <option value="telescope">Telescope</option>
                   <option value="other">БУСАД</option>
                 </select>
               </label>

@@ -55,7 +55,7 @@ export default function Products() {
                   <div>{product.category}</div>
                 </td>
                 <td className="product_table_edit">
-                  <ThreeDots />
+                  <Drop product={product} />
                 </td>
               </tr>
             ))}

@@ -45,3 +45,32 @@
   text-align: center;
   border-radius: 5px;
 }
+#dropdown-basic-button {
+  background-color: #fff;
+  border: none;
+}
+#dropdown-basic-button::after {
+  content: none;
+}
+.edit_btn:first-child {
+  padding: 0;
+}
+.edit_btn .canvas_btn {
+  width: 100%;
+  padding: 4px 16px;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  transition: none;
+  text-align: start;
+}
+
+.edit_btn:hover .canvas_btn {
+  background: inherit;
+  color: #000;
+}
+.edit_btn.canvas_btn:active,
+.edit_btn:active .canvas_btn {
+  background-color: inherit;
+  color: #fff;
+}
