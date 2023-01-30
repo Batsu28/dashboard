@@ -6,8 +6,9 @@ import AddIcon from "../icons/AddIcon";
 import axios from "axios";
 
 export default function ProductCanvas(prop) {
-  const { specVal, setSpecVal, product } = prop;
+  const { product } = prop;
   const [show, setShow] = useState(false);
+  const [specVal, setSpecVal] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,21 +16,19 @@ export default function ProductCanvas(prop) {
   function postProduct(e) {
     e.preventDefault();
 
-    let arr = specVal.map((spec) => ({ [spec[0]]: spec[1] }));
-    console.log(arr);
-
     axios
       .post("http://localhost:2000/products", {
         description: "none",
-        name: `${e.target.addName.value}`,
-        spec: arr,
-        price: `${e.target.addPrice.value}`,
-        stock: `${e.target.addStock.value}`,
-        sale: `${e.target.addSale.value}`,
-        category: `${e.target.addCategoty.value}`,
+        name: e.target.addName.value,
+        spec: specVal,
+        price: e.target.addPrice.value,
+        stock: e.target.addStock.value,
+        sale: e.target.addSale.value,
+        category: e.target.addCategoty.value,
       })
       .then((res) => console.log(res))
       .catch((res) => console.log(res));
+    location.reload();
   }
   return (
     <>
@@ -99,27 +98,34 @@ export default function ProductCanvas(prop) {
                 />
               </label>
             </div>
-            <div className="product_spec">
+            <div className="product_spec ">
               <p>Үзүүлэлтүүд</p>
-              {product ? (
-                ""
-              ) : (
-                <AddInput
-                  setSpecVal={setSpecVal}
-                  specVal={specVal}
-                  btnName={
-                    <div>
-                      <AddIcon /> Үзүүлэлт нэмэх
-                    </div>
-                  }
-                />
-              )}
+              <AddInput
+                setSpecVal={setSpecVal}
+                specVal={specVal}
+                btnName={
+                  <div>
+                    <AddIcon /> Үзүүлэлт нэмэх
+                  </div>
+                }
+              />
               <div className="product_info">
+                {product &&
+                  product.spec.map((spec, index) => (
+                    <label key={index}>
+                      {Object.keys(spec)}
+                      <input type="text" defaultValue={Object.values(spec)} />
+                    </label>
+                  ))}
                 {specVal &&
                   specVal.map((spec, index) => (
                     <label key={index}>
-                      {spec[0]}
-                      <input type="text" value={spec[1]} readOnly />
+                      {Object.keys(spec)}
+                      <input
+                        type="text"
+                        defaultValue={Object.values(spec)}
+                        readOnly
+                      />
                     </label>
                   ))}
               </div>
@@ -151,7 +157,9 @@ export default function ProductCanvas(prop) {
                 </select>
               </label>
             </div>
-            <button type="submit">ХАДГАЛАХ</button>
+            <button type="submit" onClick={handleClose}>
+              ХАДГАЛАХ
+            </button>
           </form>
         </Offcanvas.Body>
       </Offcanvas>

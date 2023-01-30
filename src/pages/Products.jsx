@@ -1,23 +1,31 @@
 import "../styles/product.css";
 import ProductCanvas from "../components/sub-components/ProductsCanvas";
 import DisplayIcon from "../components/icons/DisplayIcon";
-import ThreeDots from "../components/icons/ThreeDots";
 import Drop from "../components/sub-components/Drop";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Products() {
   const [products, setProducts] = useState("");
-  const [specVal, setSpecVal] = useState([]);
-  const [test, setTest] = useState("");
+  const [dltProduct, setDltProduct] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:2000/products")
       .then((res) => setProducts(res.data));
-  }, [test]);
+  }, [dltProduct]);
+
   console.log(products);
-  console.log(specVal);
+
+  console.log(dltProduct);
+
+  useEffect(() => {
+    axios
+      .delete(`http://localhost:2000/products/${dltProduct}`)
+      .then((res) => console.log(res))
+      .catch((res) => console.log(res));
+    setDltProduct("");
+  }, [dltProduct]);
 
   return (
     <div className="pages product">
@@ -26,23 +34,23 @@ export default function Products() {
           <DisplayIcon />
           Бүтээгдхүүнүүд
         </div>
-        <ProductCanvas setSpecVal={setSpecVal} specVal={specVal} />
+        <ProductCanvas />
       </div>
-      <table>
-        <thead>
-          <tr>
-            <td>Зураг</td>
-            <td className="product_table_name">Барааны нэр</td>
-            <td>Үнэ</td>
-            <td>Үлдэгдэл</td>
-            <td>Хямдрал %</td>
-            <td>Категори</td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody className="products">
-          {products &&
-            products.map((product, index) => (
+      {products && (
+        <table>
+          <thead>
+            <tr>
+              <td>Зураг</td>
+              <td className="product_table_name">Барааны нэр</td>
+              <td>Үнэ</td>
+              <td>Үлдэгдэл</td>
+              <td>Хямдрал %</td>
+              <td>Категори</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody className="products">
+            {products.map((product, index) => (
               <tr key={index}>
                 <td className="product_table_img dis_flex">
                   <img src={product.image} alt={product.name} />
@@ -50,17 +58,20 @@ export default function Products() {
                 <td className="product_table_name">{product.name}</td>
                 <td className="product_table_price">{product.price}$</td>
                 <td className="product_table_stock">{product.stock}</td>
-                <td className="product_table_sale">{product.sale}%</td>
+                <td className="product_table_sale">
+                  {product.sale === 0 ? "none" : `${product.sale} $`}
+                </td>
                 <td className="product_table_category">
                   <div>{product.category}</div>
                 </td>
                 <td className="product_table_edit">
-                  <Drop product={product} />
+                  <Drop product={product} setDltProduct={setDltProduct} />
                 </td>
               </tr>
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

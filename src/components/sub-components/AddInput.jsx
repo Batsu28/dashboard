@@ -9,7 +9,7 @@ export default function AddInput(prop) {
   function addSpec(e) {
     e.preventDefault();
     if (e.target.label.value !== "" || e.target.spec.value !== "") {
-      setSpecVal([...specVal, [e.target.label.value, e.target.spec.value]]);
+      setSpecVal([...specVal, { [e.target.label.value]: e.target.spec.value }]);
     }
 
     console.log(e.target.label.value);
