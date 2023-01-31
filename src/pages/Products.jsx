@@ -19,14 +19,6 @@ export default function Products() {
 
   console.log(dltProduct);
 
-  useEffect(() => {
-    axios
-      .delete(`http://localhost:2000/products/${dltProduct}`)
-      .then((res) => console.log(res))
-      .catch((res) => console.log(res));
-    setDltProduct("");
-  }, [dltProduct]);
-
   return (
     <div className="pages product">
       <div>

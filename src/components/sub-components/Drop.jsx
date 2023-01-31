@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -5,17 +6,19 @@ import ThreeDots from "../icons/ThreeDots";
 import ProductCanvas from "./ProductsCanvas";
 
 export default function Drop(prop) {
-  const { product, setDltProduct, setSpecVal } = prop;
+  const { product, setDltProduct } = prop;
+  function deleteProduct() {
+    setDltProduct(product.id);
+    axios
+      .delete(`http://localhost:2000/products/${product.id}`)
+      .then((res) => console.log(res))
+      .catch((res) => console.log(res));
+  }
   return (
     <DropdownButton id="dropdown-basic-button" title={<ThreeDots />}>
-      <Dropdown.Item className="edit_btn">
-        <ProductCanvas product={product} />
-      </Dropdown.Item>
+      <ProductCanvas product={product} />
       <Dropdown.Item>
-        <button
-          className="delete_product"
-          onClick={() => (setDltProduct(product.id), setSpecVal(product.spec))}
-        >
+        <button className="delete_product" onClick={deleteProduct}>
           Устгах
         </button>
       </Dropdown.Item>

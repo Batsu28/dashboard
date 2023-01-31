@@ -13,22 +13,38 @@ export default function ProductCanvas(prop) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function postProduct(e) {
+  function submitHandler(e) {
     e.preventDefault();
+    let data = {
+      description: "none",
+      name: e.target.addName.value,
+      spec: specVal,
+      price: e.target.addPrice.value,
+      stock: e.target.addStock.value,
+      sale: e.target.addSale.value,
+      category: e.target.addCategoty.value,
+    };
 
+    if (1 == 1) {
+      console.log("put", data);
+    } else {
+      postProduct(data);
+    }
+  }
+
+  function postProduct(product) {
+    console.log("post");
     axios
-      .post("http://localhost:2000/products", {
-        description: "none",
-        name: e.target.addName.value,
-        spec: specVal,
-        price: e.target.addPrice.value,
-        stock: e.target.addStock.value,
-        sale: e.target.addSale.value,
-        category: e.target.addCategoty.value,
-      })
+      .post("http://localhost:2000/products", product)
       .then((res) => console.log(res))
       .catch((res) => console.log(res));
-    location.reload();
+  }
+  function patchProduct(data) {
+    console.log("put");
+    axios
+      .put(`http://localhost:2000/products/${product.id}`, data)
+      .then((res) => console.log(res))
+      .catch((res) => console.log(res));
   }
   return (
     <>
@@ -50,7 +66,7 @@ export default function ProductCanvas(prop) {
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <form className="addProduct" onSubmit={postProduct}>
+          <form className="addProduct" onSubmit={submitHandler}>
             <div className="product_img">
               <p>Барааны зураг</p>
               <input
