@@ -5,21 +5,33 @@ import "../styles/settings.css";
 export default function Settings() {
   const [test, setTest] = useState(false);
   const [arr, setArr] = useState([]);
+  const [spec, setSpec] = useState([]);
+
   function add() {
     return arr.map((n, i) => (
       <div key={i}>
-        <input type="text" />
-        <input type="text" />
+        <input type="text" name="specName" />
+        <input type="text" name="specVal" />
       </div>
     ));
   }
+  function submitHandler(e) {
+    e.preventDefault();
+    console.log(e.target.specName.value);
+    for (let i = 0; i < arr.length; i++) {
+      setSpec([...spec, e.target.specName.value]);
+    }
+    console.log(spec);
+  }
+
   return (
     <div className="pages setting">
       <div className="page_title">
         <SettingIcon />
         Тохиргоо
       </div>
-      <div>
+      <form onSubmit={submitHandler}>
+        {test && add()}
         <input
           type="button"
           value="click"
@@ -28,8 +40,9 @@ export default function Settings() {
             setArr([...arr, ""]);
           }}
         />
-      </div>
-      {test && add()}
+
+        <button type="submit">submit</button>
+      </form>
     </div>
   );
 }
