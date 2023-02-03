@@ -8,11 +8,11 @@ import axios from "axios";
 export default function ProductCanvas(prop) {
   const { product } = prop;
   const [show, setShow] = useState(false);
-  const [specVal, setSpecVal] = useState([]);
+  const [specVal, setSpecVal] = useState(product && product.spec);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  console.log(specVal);
   function submitHandler(e) {
     e.preventDefault();
     let data = {
@@ -126,13 +126,6 @@ export default function ProductCanvas(prop) {
                 }
               />
               <div className="product_info">
-                {product &&
-                  product.spec.map((spec, index) => (
-                    <label key={index}>
-                      {Object.keys(spec)}
-                      <input type="text" defaultValue={Object.values(spec)} />
-                    </label>
-                  ))}
                 {specVal &&
                   specVal.map((spec, index) => (
                     <label key={index}>
