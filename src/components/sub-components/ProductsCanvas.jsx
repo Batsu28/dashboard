@@ -24,9 +24,8 @@ export default function ProductCanvas(prop) {
       sale: e.target.addSale.value,
       category: e.target.addCategoty.value,
     };
-
     if (1 == 1) {
-      console.log("put", data);
+      patchProduct(data);
     } else {
       postProduct(data);
     }
