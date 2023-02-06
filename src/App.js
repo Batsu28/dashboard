@@ -11,24 +11,42 @@ import Products from "./pages/Products";
 import { createContext } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <div className="container">
-        <div className="main">
-          <SideMenu />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/moderator" element={<Moderater />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/users" element={<Users />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header />
+			<div className="container">
+				<div className="main">
+					<SideMenu />
+					<Routes>
+						<Route
+							path="/"
+							element={<Home />}
+						/>
+						<Route
+							path="/products"
+							element={<Products />}
+						/>
+						<Route
+							path="/order"
+							element={<Order />}
+						/>
+						<Route
+							path="/moderator"
+							element={<Moderater />}
+						/>
+						<Route
+							path="/settings"
+							element={<Settings />}
+						/>
+						<Route
+							path="/users"
+							element={<Users />}
+						/>
+					</Routes>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default App;
