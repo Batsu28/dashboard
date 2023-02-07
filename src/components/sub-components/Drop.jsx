@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { ProductsContext } from "../../App";
 import ThreeDots from "../icons/ThreeDots";
 import ProductCanvas from "./ProductsCanvas";
 
 export default function Drop(prop) {
-  const { product, setDltProduct } = prop;
+  const { product } = prop;
+  const { setDltProduct } = useContext(ProductsContext);
   function deleteProduct() {
     setDltProduct(product.id);
     axios
